@@ -1,4 +1,7 @@
 @import-normalize; /* bring in normalize.css styles */
+html {
+  background-color: #0d1117;
+}
 
 body {
   margin: 0;
@@ -7,6 +10,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  padding-bottom: 60px;
 }
 
 code {
