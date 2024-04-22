@@ -10,7 +10,7 @@ import SearchBar from './SearchBar/Searchbar';
 export const App = ({ inputValue }) => {
   const [imgArr, setImgArr] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState('puppy');
+  const [query, setQuery] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [page, setPage] = useState(1);
 
@@ -61,16 +61,18 @@ export const App = ({ inputValue }) => {
       <SearchBar onSubmit={handleSearchSubmit} />
       <Modal selectedImage={selectedImage} onClose={handleCloseModal} />
 
-      <div>
-        <ImageGallery>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <ImageGalleryItem imgArr={imgArr} onClick={handleImageClick} />
-          )}
-        </ImageGallery>
-        {imgArr.length > 0 && <Button onClick={handleLoadMore} />}
-      </div>
+      {query !== '' && (
+        <div>
+          <ImageGallery>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <ImageGalleryItem imgArr={imgArr} onClick={handleImageClick} />
+            )}
+          </ImageGallery>
+          {imgArr.length > 0 && <Button onClick={handleLoadMore} />}
+        </div>
+      )}
     </div>
   );
 };
